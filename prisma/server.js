@@ -55,8 +55,27 @@ app.delete('/explorers/:id', async (req, res) => {
 });
 
 app.get('/missioncommanders', async (req, res) => {
-  const allExplorers =  await prisma.missionCommander.findMany({});
-  res.json(allExplorers);
+  const allMissionCommanders =  await prisma.missionCommander.findMany({});
+  res.json(allMissionCommanders);
+});
+
+app.get('/missioncommanders/:id', async (req, res) => {
+  const id = req.params.id;
+  const missioncommander = await prisma.missionCommander.findUnique({where: {id: parseInt(id)}});
+  res.json(missioncommander);
+});
+
+app.post('/missioncommanders', async (req, res) => {
+  const missioncommander = {
+    name: req.body.name,
+    lang: req.body.lang,
+    missionCommander: req.body.missionCommander,
+    hasCertification: req.body.hasCertification,
+    enrollments: req.body.enrollments
+   };
+  const message = 'MissionCommander creado.';
+  await prisma.missionCommander.create({data: missioncommander});
+  return res.json({message});
 });
 
 app.listen(port, () => {
