@@ -13,6 +13,7 @@ const prisma = new PrismaClient();
       },
     });
 
+
     const woopa1 = await prisma.explorer.upsert({
       where: { name: 'Woopa1' },
       update: {},
@@ -52,6 +53,31 @@ const prisma = new PrismaClient();
                   mission: 'Node'
         },
       });
+
+    const commander = await prisma.MissionCommander.upsert({
+      where: { name: 'Gera Alba' },
+      update: {},
+      create: {
+        name: 'Gera Alba',
+                lang: 'Javascript',
+                missionCommander: 'Carlo Gilmar',
+                enrollments: 1,
+                hasCertification: true 
+      },
+    });
+
+    const commander1 = await prisma.MissionCommander.upsert({
+      where: { name: 'explorer1' },
+      update: {},
+      create: {
+        name: 'explorer1',
+                lang: 'Java',
+                missionCommander: 'Fer Ochoa',
+                enrollments: 1,
+                hasCertification: false 
+      },
+    });
+
 
     console.log('Create 4 explorers');
   } catch(e) {
