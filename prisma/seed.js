@@ -54,32 +54,32 @@ const prisma = new PrismaClient();
         },
       });
 
-    const commander = await prisma.MissionCommander.upsert({
-      where: { name: 'Gera Alba' },
+    const commander = await prisma.missionCommander.upsert({
+      where: { name: 'Carlo Gilmar' },
       update: {},
       create: {
-        name: 'Gera Alba',
-                lang: 'Javascript',
-                missionCommander: 'Carlo Gilmar',
-                enrollments: 1,
-                hasCertification: true 
+                name: 'Carlo Gilmar',
+                username: 'carlogilmar',
+                mainStack: 'Elixir',
+                currentEnrollment: true,
+                hasAzureCertification: true 
       },
     });
 
-    const commander1 = await prisma.MissionCommander.upsert({
-      where: { name: 'explorer1' },
+    const commander1 = await prisma.missionCommander.upsert({
+      where: { name: 'Fernanda Ochoa' },
       update: {},
       create: {
-        name: 'explorer1',
-                lang: 'Java',
-                missionCommander: 'Fer Ochoa',
-                enrollments: 1,
-                hasCertification: false 
+                name: 'Fernanda Ochoa',
+                username: 'FerOchoa',
+                mainStack: 'Java',
+                currentEnrollment: true,
+                hasAzureCertification: true 
       },
     });
 
 
-    console.log('Create 4 explorers');
+    console.log('7 entries created');
   } catch(e) {
     console.error(e);
     process.exit(1);
