@@ -75,10 +75,11 @@ app.get('/missioncommanders/:id', async (req, res) => {
 app.post('/missioncommanders', async (req, res) => {
   const missioncommander = {
     name: req.body.name,
-    lang: req.body.lang,
-    missionCommander: req.body.missionCommander,
-    hasCertification: req.body.hasCertification,
-    enrollments: req.body.enrollments
+    username: req.body.username,
+    mainStack: req.body.mainStack,
+    currentEnrollment: req.body.currentEnrollment,
+    hasAzureCertification: req.body.hasAzureCertification
+    
    };
   const message = 'MissionCommander creado.';
   await prisma.missionCommander.create({data: missioncommander});
@@ -93,7 +94,7 @@ app.put('/missioncommanders/:id', async (req, res) => {
 			id: id
 		},
 		data: {
-			lang: req.body.lang
+			mainStack: req.body.mainStack
 		}
 	})
 
